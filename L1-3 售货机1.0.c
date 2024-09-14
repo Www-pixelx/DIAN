@@ -1,19 +1,18 @@
 #include<stdio.h>
 int main()
 {//摆放货物
-	int price,quantity;
+		int price,quantity;
 	printf("货物名称：A ;通道：1\n请输入摆放货物的单价");
 	scanf("%d",&price);
 	printf("请输入摆放货物的个数（<=50)");
-	site:
-	scanf("%d",&quantity);
-	if(quantity > 50){
-	printf("您最多只能摆放50件货物，请重新输入");
-	goto site;
-	}
-	else{
-	printf("已在1通道摆放A货物%d个，单价%d元。\n",quantity,price);
-	}
+	while(1){
+		scanf("%d",&quantity);
+		if(quantity>50)
+		printf("您最多只能摆放50件货物，请重新输入");
+	    else
+	    printf("已在1通道摆放A货物%d个，单价%d元。\n",quantity,price);
+	    break;
+		}
 	//购买
 	int num = 0;
 	int amount1 = 0;
