@@ -7,12 +7,12 @@ int main()
 	int i;
 	printf("请输入购买商品的总价");
 	scanf("%d",&sum);
-	error:
 	printf("请付款");
+	while(1){
 	scanf("%d",&pay);
 	int change = pay - sum;
 	if((pay == 1 || pay == 2 || pay == 5) && pay >= sum){
-		printf("成功付款，找您%d元",change);
+		printf("成功付款，找您%d元",change);break;
 	}
 	else if((pay == 1 || pay == 2 || pay == 5) && pay < sum)
 	{
@@ -26,12 +26,12 @@ int main()
 				printf("您只能一次支付一元、二元或五元\n");
 				}
 			}
-		printf("付款成功，找您%d元",amount - sum + pay);
+		printf("付款成功，找您%d元",amount - sum + pay);break;
 	}
 	else
 	{
-		printf("您只能一次支付一元、二元或五元，请重新支付。\n");
-		goto error;
+		printf("您只能一次支付一元、二元或五元，请重新支付。\n");	
+	}
 	}
 return 0;
 }
