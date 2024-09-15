@@ -18,8 +18,8 @@ int main()
 	int num = 0;
 	int amount1 = 0;
 	char input;
-	while(amount1<=quantity){
 	site:
+	while(amount1<=quantity){
 	printf("请输入购买的货物数量");
 	scanf("%d",&num);
 	if(num>quantity){break;}
