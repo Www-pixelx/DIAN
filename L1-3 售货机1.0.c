@@ -1,68 +1,62 @@
 #include<stdio.h>
 int main()
 {//摆放货物
-	int price,quantity;
+	int price,qnty;
 	printf("货物名称：A ;通道：1\n请输入摆放货物的单价");
 	scanf("%d",&price);
 	printf("请输入摆放货物的个数（<=50)");
 	while(1){
-		scanf("%d",&quantity);
-		if(quantity>50){
+		scanf("%d",&qnty);
+		if(qnty>50){
 		printf("您最多只能摆放50件货物，请重新输入\n");
 		continue;}
 	    else{
-	    printf("已在1通道摆放A货物%d个，单价%d元。\n",quantity,price);
+	    printf("已在1通道摆放A货物%d个，单价%d元。\n",qnty,price);
 	    break;}
 		}
-	//购买
-	int num = 0;
-	int amount1 = 0;
-	char input;
-	site:
-	while(amount1<=quantity){
-	printf("请输入购买的货物数量");
+		//付款
+	int num;//购买的数量	
+	int sum;//总价
+	int pay;//每次付的钱
+	int amount;//总付款
+	int i,ii;
+	while(1){
+	while(1){
+	printf("剩%d件货物，单价%d元，请输入购买商品的数量",qnty,price);
 	scanf("%d",&num);
-	if(num>quantity){break;}
-	else{
-	if(amount1 + num > 100)break;
-	else
-	amount1 += num;
-	int sum = price*amount1;
-	int pay = 0;
-	int amount = 0;
-	int i;
-	printf("您一共消费%d元，请付款\n",sum);
+	if(num <= qnty) {
+	qnty -= num;
+	break;}
+	else {
+	printf("货物不足，剩%d件货物。是否重新选择货物数量？\n若是，请按1；不是，按任意数字键退出购买。",qnty);
+	scanf("%d",&i);
+	if(i == 1)continue;
+	else goto exit;
+	}
+    }
+    sum = price * num;
+	printf("总价%d元，请付款",sum);
 	while(1){
 	scanf("%d",&pay);
-	int change = pay - sum;
-	if((pay == 1 || pay == 2 || pay == 5) && pay >= sum){
-		printf("成功付款，找您%d元",change);break;
-	}
-	else if((pay == 1 || pay == 2 || pay == 5) && pay < sum)
-	{
-		while(amount < (sum - pay)){
-			printf("金额不足，请继续付款\n");
-			scanf("%d",&i);
-			if(i == 1 || i == 2 || i == 5) amount += i;
-			else printf("您只能一次支付一元、二元或五元\n");
-			}
-		printf("付款成功，找您%d元\n",amount - sum + pay);break;
-	}
-	else
-	{printf("您只能一次支付一元、二元或五元，请重新支付。\n");}
-	}
-	printf("是否再次购买?若是，请按1；若不是，按任意键结束购物。");
-	scanf("%c",&input);
-	input = getchar();
-	if(input == '1')continue;
-	else break;
-	}
-	}printf("货物不足,还剩%d件货物。\n",quantity - amount1);
-	printf("是否再次购买?若是，请按2；若不是，按任意键结束购物。");
-	char ii;
-	scanf("%c",&ii);
-	ii = getchar();
-	if(ii == '2')goto site;
-	else
-	return 0;
+	amount += pay;
+	if((pay == 1 || pay == 2 || pay == 5) && amount >= sum){
+		printf("成功付款，找您%d元。\n",amount - sum);
+		amount = 0;
+		break;}
+	else if((pay == 1 || pay == 2 || pay == 5) && amount < sum){
+	    printf("金额不足，剩%d元未付清，请继续付款\n",sum - amount);
+	    continue;}		
+	else{
+		printf("您只能一次支付一元、二元或五元，请重新支付。\n");
+		amount -= pay;	
+	    }
+}
+printf("是否再次购买？\n若是，请按2；不是，按任意数字键退出购买。");
+scanf("%d",&ii);
+if(ii == 2)continue;
+else break;
+}
+exit:
+printf("谢谢惠顾！");
+return 0;}
 }
