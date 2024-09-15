@@ -43,19 +43,14 @@ int main()
 		while(amount < (sum - pay)){
 			printf("金额不足，请继续付款\n");
 			scanf("%d",&i);
-			if(i == 1 || i == 2 || i == 5){
-				amount += i;
-			}
-			else{
-				printf("您只能一次支付一元、二元或五元\n");
-				}
+			if(i == 1 || i == 2 || i == 5) amount += i;
+			else printf("您只能一次支付一元、二元或五元\n");
 			}
 		printf("付款成功，找您%d元\n",amount - sum + pay);break;
 	}
 	else
-	{
-		printf("您只能一次支付一元、二元或五元，请重新支付。\n");
-	}}
+	{printf("您只能一次支付一元、二元或五元，请重新支付。\n");}
+	}
 	printf("是否再次购买?若是，请按1；若不是，按任意键结束购物。");
 	scanf("%c",&input);
 	input = getchar();
