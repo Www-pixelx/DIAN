@@ -58,5 +58,5 @@ else break;
 }
 exit:
 printf("谢谢惠顾！");
-return 0;}
+return 0;
 }
