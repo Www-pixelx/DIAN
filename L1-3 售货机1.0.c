@@ -1,4 +1,5 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <string.h>
 int main()
 {//摆放货物
 	int price,qnty;
@@ -19,7 +20,7 @@ int main()
 	int sum;//总价
 	int pay;//每次付的钱
 	int amount;//总付款
-	int i,ii;
+	char i[100],ii[100];
 	while(1){
 	while(1){
 	printf("剩%d件货物，单价%d元，请输入购买商品的数量",qnty,price);
@@ -28,10 +29,10 @@ int main()
 	qnty -= num;
 	break;}
 	else {
-	printf("货物不足，剩%d件货物。是否重新选择货物数量？\n若是，请按1；不是，按任意数字键退出购买。",qnty);
-	scanf("%d",&i);
-	if(i == 1)continue;
-	else goto exit;
+	printf("货物不足，剩%d件货物。是否重新选择货物数量？\n退出购买请输入END；继续购买，输入任意值。",qnty);
+	scanf("%s",&i);
+	if(strcmp(i, "END") == 0) goto exit;
+	else continue;
 	}
     }
     sum = price * num;
@@ -51,10 +52,10 @@ int main()
 		amount -= pay;	
 	    }
 }
-printf("是否再次购买？\n若是，请按2；不是，按任意数字键退出购买。");
-scanf("%d",&ii);
-if(ii == 2)continue;
-else break;
+printf("是否再次购买？\n退出购买请输入END；继续购买，输入任意值。");
+scanf("%s",&ii);
+if(strcmp(ii, "END") == 0)break;
+else continue;
 }
 exit:
 printf("谢谢惠顾！");
