@@ -92,7 +92,6 @@ scanf("%3s",i);
 while (getchar() != '\n');
 if(strcmp(i, "END") == 0)break;
 }
-exit:
 printf("谢谢惠顾！");
 		return 0;
 	}
