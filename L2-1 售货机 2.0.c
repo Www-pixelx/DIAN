@@ -7,7 +7,6 @@ int main(){
     SetConsoleOutputCP(CP_UTF8);
 	//摆放货物
 	int p[5] = {0};//每个通道的货物数量
-	int mark[5] = {0} ;//空通道标记为 0
 	char goods;
 	char g[5];//储存货物的名称
 	int pr[5];//每种货物的单价
@@ -24,16 +23,18 @@ int main(){
 		else if(qnty > MAX){
 			printf("一个通道最多容纳50个货物。\n");//一次摆放货物过多
 		}
-	    else if(mark[pass - 1] == 1 && goods != g[pass-1]) {
+	    else if(p[pass-1] != 0 && goods != g[pass-1]) {
 		printf("该通道已被占用\n");//放的货物与通道原有货物不同
 	   }
-	    else if((mark[pass-1] == 1 && goods == g[pass-1]) || mark[pass-1] == 0){//正确摆放
+	   else if (p[pass-1] != 0 && goods == g[pass-1] && price != pr[pass-1]){
+	   	printf("单价输入有误。");//货物单价输入不同
+	   }
+	    else if((p[pass-1] != 0 && goods == g[pass-1] && price == pr[pass-1]) || p[pass-1] == 0){//正确摆放
 	   	p[pass-1] += qnty;//增加相应通道的货物数量
 	   	if(p[pass-1] > MAX){
 	   	printf("一个通道最多容纳50个货物。\n");//第二次摆放后货物过多
 	   	p[pass-1]-=qnty;}
 		else{
-	   mark[pass - 1] = 1;//有货标记为 1
 	   pr[pass - 1] = price;//储存货物价格
 	   g[pass-1] = goods;//储存货物名称
 	   printf("%d: %c * %d 单价%d元\n",pass,goods,p[pass-1],price);
@@ -47,7 +48,7 @@ int main(){
 }
 	printf("最终摆放情况:\n");
 	for(int t = 0;t <= 4;t++){
-		if(mark[t] == 1) printf("%d: %c * %d 单价%d元\n",t+1,g[t],p[t],pr[t]);
+		if(p[t] != 0) printf("%d: %c * %d 单价%d元\n",t+1,g[t],p[t],pr[t]);
 	}
 	//选择货物
 	int sum = 0;
