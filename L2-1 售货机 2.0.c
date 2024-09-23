@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <windows.h>
-
 int NUMBER[5] = {0}; // 每个通道的货物数量
 char NAME[5][5]; // 储存货物的名称
 int UNIT[5]; // 每种货物的单价
@@ -12,10 +8,7 @@ int sum = 0; // 初始化sum
 void LAYOUT(char goods, int channel, int qnty, int price) {
     while (1) { // 重新摆放货物的循环
         printf("请输入摆放货物的名称、通道、单价和数量(用空格隔开)\n");
-        scanf(" %c", &goods);
-        scanf(" %d", &channel);
-        scanf(" %d", &price);
-        scanf(" %d", &qnty);
+        scanf(" %c %d %d %d", &goods,&channel,&price,&qnty);
         while (getchar() != '\n'); // 清空缓存区
         int mark;
         if (channel < 1 || channel > 5) {
@@ -70,9 +63,7 @@ void LAYOUT(char goods, int channel, int qnty, int price) {
 int PURCHASE(char goods, int channel, int qnty, int price) {
     while (1) {
         printf("输入购买货物的名称、通道和个数(用空格隔开)\n");
-        scanf(" %c", &goods);
-        scanf(" %d", &channel);
-        scanf(" %d", &qnty);
+        scanf(" %c %d %d", &goods,&channel,&qnty);
         while (getchar() != '\n');
         if (channel < 1 || channel > 5) {
             printf("通道号必须在1到5之间\n");
