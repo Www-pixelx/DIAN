@@ -1,6 +1,10 @@
 #include<stdio.h>
+#include<windows.h>
 int main()
 {
+	#define CP_UTF8 65001
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
 	char name;
 	int pass,price,quantity;
 	printf("货物：A,B,C,D,E;通道：1，2，3，4，5;个数不大于五十。\n请输入想要摆放的货物的名称，通道，单价和个数（用空格隔开）\n");
