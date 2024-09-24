@@ -1,6 +1,10 @@
 #include<stdio.h>
+#include<windows.h>
 int main()
 {
+	#define CP_UTF8 65001
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
 	int sum = 0;//总价
 	int pay = 0;//每次付的钱
 	int amount = 0;//总付款
