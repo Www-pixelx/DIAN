@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <windows.h>
 int main()
-{//摆放货物
+{
+	#define CP_UTF8 65001
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
+	//摆放货物
 	int price,qnty;
 	printf("货物名称：A ;通道：1\n请输入摆放货物的单价");
 	scanf("%d",&price);
